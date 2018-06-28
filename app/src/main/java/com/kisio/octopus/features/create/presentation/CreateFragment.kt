@@ -32,7 +32,7 @@ class CreateFragment : BaseFragment() {
         initializeView()
 
         fcr_create.setOnClickListener {
-            createViewModel.createUser(fcr_email.editText?.text.toString(), fcr_password.editText?.text.toString(), fcr_firstname.editText?.text.toString(), fcr_lastname.editText?.text.toString())
+            createViewModel.createUser(fcr_email.editText?.text.toString(), fcr_password.editText?.text.toString())
         }
     }
 
@@ -40,7 +40,6 @@ class CreateFragment : BaseFragment() {
     }
 
     private fun renderCreate(test: Boolean?) {
-        hideProgress()
     }
 
     private fun create() {
@@ -55,7 +54,6 @@ class CreateFragment : BaseFragment() {
     }
 
     private fun renderFailure(@StringRes message: Int) {
-        hideProgress()
         notifyWithAction(message, R.string.action_refresh, ::create)
     }
 }

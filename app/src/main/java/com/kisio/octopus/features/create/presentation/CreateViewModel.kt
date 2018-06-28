@@ -11,7 +11,7 @@ class CreateViewModel
 
     var createStatus: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun createUser(email: String, password: String, firstName: String, lastName: String) = create.execute({ it.either(::handleFailure, ::handleSuccess) }, Create.Params(email, password, firstName, lastName))
+    fun createUser(email: String, password: String) = create.execute({ it.either(::handleFailure, ::handleSuccess) }, Create.Params(email, password))
 
     private fun handleSuccess(status: CreateStatusResponse) {
         when (status.status) {

@@ -9,17 +9,30 @@ import retrofit2.Call
 import javax.inject.Inject
 
 interface CreateRepository {
-    fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, CreateStatusResponse>
+    fun createAccount(email: String, password: String): Either<Failure, CreateStatusResponse>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
                         private val service: CreateService) : CreateRepository {
 
-        override fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, CreateStatusResponse> {
+        override fun createAccount(email: String, password: String): Either<Failure, CreateStatusResponse> {
             return when (networkHandler.isConnected) {
-                true -> request(service.createUser(email, password, firstName, lastName), { it }, CreateStatusResponse.empty())
+                true -> {
+                    val firstLastName = extractFirstLastName(email)
+                    request(service.createUser(email, password, firstLastName[0], firstLastName[1]), { it }, CreateStatusResponse.empty())
+                }
                 false, null -> Either.Left(Failure.NetworkConnection())
             }
+        }
+
+        private fun extractFirstLastName(email: String) : List<String> {
+            val temp = email.split("@")
+
+            val result = mutableListOf<String>()
+            result.add(temp[0].split(".")[0])
+            result.add(temp[0].split(".")[1])
+
+            return result
         }
 
         private fun <T, R> request(call: Call<T>, transform: (T) -> R, default: T): Either<Failure, R> {

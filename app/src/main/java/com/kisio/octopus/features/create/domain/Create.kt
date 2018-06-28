@@ -7,7 +7,7 @@ import javax.inject.Inject
 class Create
 @Inject constructor(private val createRepository: CreateRepository) : UseCase<CreateStatusResponse, Create.Params>() {
 
-    override suspend fun run(params: Params) = createRepository.createAccount(params.email, params.password, params.firstName, params.lastName)
+    override suspend fun run(params: Params) = createRepository.createAccount(params.email, params.password)
 
-    data class Params(val email: String, val password: String, val firstName: String, val lastName: String)
+    data class Params(val email: String, val password: String)
 }
