@@ -1,4 +1,4 @@
-package com.kisio.octopus.features.connection.presentation
+package com.kisio.octopus.features.restaurants.presentation
 
 import android.os.Bundle
 import android.support.annotation.StringRes
@@ -9,19 +9,20 @@ import com.kisio.octopus.core.extension.observe
 import com.kisio.octopus.core.extension.failure
 import com.kisio.octopus.core.extension.viewModel
 import com.kisio.octopus.core.platform.BaseFragment
+import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 
-class ConnectionFragment : BaseFragment() {
+class RestaurantsFragment : BaseFragment() {
 
     private lateinit var connectionViewModel: RestaurantsViewModel
 
-    override fun layoutId(): Int = R.layout.fragment_connection
+    override fun layoutId(): Int = R.layout.fragment_restaurants
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
 
         connectionViewModel = viewModel(viewModelFactory) {
-            observe(authenticateStatus, ::renderConnectionSuccess)
+            observe(restaurantsLiveData, ::renderConnectionSuccess)
             failure(failure, ::handleFailure)
         }
     }
@@ -41,7 +42,7 @@ class ConnectionFragment : BaseFragment() {
         //connectionViewModel.authenticateUser()
     }
 
-    private fun renderConnectionSuccess(test: Boolean?) {
+    private fun renderConnectionSuccess(restaurants: List<RestaurantEntity>?) {
         hideProgress()
     }
 

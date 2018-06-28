@@ -2,7 +2,7 @@ package com.kisio.octopus.core.di.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.kisio.octopus.features.connection.presentation.ConnectionViewModel
+import com.kisio.octopus.features.connection.presentation.RestaurantsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -14,6 +14,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ConnectionViewModel::class)
-    abstract fun bindsConnectionViewModel(connectionViewModel: ConnectionViewModel): ViewModel
+    @ViewModelKey(RestaurantsViewModel::class)
+    abstract fun bindsConnectionViewModel(connectionViewModel: RestaurantsViewModel): ViewModel
 }

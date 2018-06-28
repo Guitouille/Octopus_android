@@ -7,9 +7,9 @@ import javax.inject.Singleton
 
 @Singleton
 class ConnectionService
-@Inject constructor(retrofit: Retrofit) : ConnectionApi {
+@Inject constructor(retrofit: Retrofit) : RestaurantApi {
 
-    private val connectionApi by lazy { retrofit.create(ConnectionApi::class.java) }
+    private val connectionApi by lazy { retrofit.create(RestaurantApi::class.java) }
 
     override fun authenticate(email: String?, password: String?): Call<Boolean> = connectionApi.authenticate(email, password)
 }

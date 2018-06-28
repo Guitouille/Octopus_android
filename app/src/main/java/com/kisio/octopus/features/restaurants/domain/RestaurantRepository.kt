@@ -1,23 +1,23 @@
-package com.kisio.octopus.features.connection.domain
+package com.kisio.octopus.features.restaurants.domain
 
+import com.kisio.octopus.features.restaurants.model.RestaurantService
 import com.kisio.octopus.core.exception.Failure
 import com.kisio.octopus.core.functional.Either
 import com.kisio.octopus.core.platform.NetworkHandler
-import com.kisio.octopus.features.connection.model.RestaurantService
+import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import retrofit2.Call
 import javax.inject.Inject
 
-interface ConnectionRepository {
-    fun authenticate(email: String, password: String): Either<Failure, Boolean>
-   // fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, Boolean>
+interface RestaurantRepository {
+    fun getRestaurants(): Either<Failure, List<RestaurantEntity>>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
                         private val service: RestaurantService) : RestaurantRepository {
 
-        override fun authenticate(email: String, password: String): Either<Failure, Boolean> {
+        override fun getRestaurants(): Either<Failure, List<RestaurantEntity>> {
             return when (networkHandler.isConnected) {
-                true -> request(service.authenticate(email, password), { it }, false)
+                true -> request(service.getRestaurants(), { it }, listOf())
                 false, null -> Either.Left(Failure.NetworkConnection())
             }
         }

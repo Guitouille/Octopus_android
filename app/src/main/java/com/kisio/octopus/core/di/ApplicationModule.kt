@@ -3,7 +3,7 @@ package com.kisio.octopus.core.di
 import android.content.Context
 import com.kisio.octopus.AndroidApplication
 import com.kisio.octopus.BuildConfig
-import com.kisio.octopus.features.connection.domain.ConnectionRepository
+import com.kisio.octopus.features.connection.domain.RestaurantRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -40,5 +40,5 @@ class ApplicationModule(private val application: AndroidApplication) {
 
     @Provides
     @Singleton
-    fun provideConnectionRepository(dataSource: ConnectionRepository.Network): ConnectionRepository = dataSource
+    fun provideConnectionRepository(dataSource: RestaurantRepository.Network): RestaurantRepository = dataSource
 }

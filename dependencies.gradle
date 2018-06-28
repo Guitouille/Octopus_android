@@ -33,6 +33,9 @@ ext {
     //Development
     leakCanaryVersion = '1.5'
 
+    // Google Maps
+    googleMapsVersion = '15.0.1'
+
     mainApplication = [
             kotlin:                     "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
             kotlinCoroutines:           "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
@@ -52,6 +55,7 @@ ext {
             javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
             retrofit:                   "com.squareup.retrofit2:converter-gson:$retrofit_version",
             okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
+            googleMaps:                 "com.google.android.gms:play-services-maps:$googleMapsVersion"
 
 
     ]
