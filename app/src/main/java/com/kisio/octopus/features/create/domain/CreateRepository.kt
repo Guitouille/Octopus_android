@@ -1,23 +1,23 @@
-package com.kisio.octopus.features.connection.domain
+package com.kisio.octopus.features.create.domain
 
 import com.kisio.octopus.core.exception.Failure
 import com.kisio.octopus.core.functional.Either
 import com.kisio.octopus.core.platform.NetworkHandler
-import com.kisio.octopus.features.connection.model.ConnectionService
+import com.kisio.octopus.features.create.model.CreateService
+import com.kisio.octopus.features.create.model.CreateStatusResponse
 import retrofit2.Call
 import javax.inject.Inject
 
-interface ConnectionRepository {
-    fun authenticate(email: String, password: String): Either<Failure, Boolean>
-    // fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, Boolean>
+interface CreateRepository {
+    fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, CreateStatusResponse>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
-                        private val service: ConnectionService) : ConnectionRepository {
+                        private val service: CreateService) : CreateRepository {
 
-        override fun authenticate(email: String, password: String): Either<Failure, Boolean> {
+        override fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, CreateStatusResponse> {
             return when (networkHandler.isConnected) {
-                true -> request(service.authenticate(email, password), { it }, false)
+                true -> request(service.createUser(email, password, firstName, lastName), { it }, CreateStatusResponse.empty())
                 false, null -> Either.Left(Failure.NetworkConnection())
             }
         }

@@ -4,7 +4,7 @@ import com.kisio.octopus.core.interactor.UseCase
 import javax.inject.Inject
 
 class Authenticate
-@Inject constructor(private val connectionRepository: RestaurantRepository) : UseCase<Boolean, Restaurants.Params>() {
+@Inject constructor(private val connectionRepository: ConnectionRepository) : UseCase<Boolean, Authenticate.Params>() {
 
     override suspend fun run(params: Params) = connectionRepository.authenticate(params.email, params.password)
 
