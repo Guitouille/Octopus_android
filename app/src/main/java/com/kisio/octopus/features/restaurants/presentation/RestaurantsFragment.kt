@@ -49,7 +49,6 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializeMap()
         initializeView(savedInstanceState)
     }
 
@@ -77,18 +76,6 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         super.onDestroy()
         fh_mapview?.onDestroy()
     }
-
-    private fun initializeMap() {
-        locationManager = context?.getSystemService(LOCATION_SERVICE) as LocationManager?
-
-        try {
-            // Request location updates
-            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
-        } catch (ex: SecurityException) {
-            Log.d("RestaurantsFragment", "Security Exception, no location available")
-        }
-    }
-
     private fun initializeView(savedInstanceState: Bundle?) {
         fh_restaurant_list.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         fh_restaurant_list.adapter = restaurantsAdapter
@@ -130,6 +117,7 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
         gMap = googleMap
         isMapViewReady = true
+        gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 48.846866, 2.377181), 14f)) //move camera to location
         gMap?.setMinZoomPreference(6.0f)
         gMap?.setMaxZoomPreference(14.0f)
         gMap?.uiSettings?.isZoomControlsEnabled = false
@@ -142,17 +130,5 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         })
 
         restaurantsViewModel.getRestaurants()
-    }
-
-    private val locationListener: LocationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-            if (isMapViewReady) {
-                gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 12f)) //move camera to location
-            }
-        }
-
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-        override fun onProviderEnabled(provider: String) {}
-        override fun onProviderDisabled(provider: String) {}
     }
 }

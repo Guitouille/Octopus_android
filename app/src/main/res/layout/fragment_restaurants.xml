@@ -25,11 +25,15 @@
         app:layout_constraintTop_toBottomOf="@id/fh_mapview"
         app:layout_constraintHorizontal_weight="1"
         android:layout_margin="8dp"
+        android:background="@drawable/shape_background_sort_restaurants"
         >
         <TextView
             android:id="@+id/fh_sort_icon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/red_color"
+            />
 
         <TextView
             android:id="@+id/fh_sort_label"
@@ -53,11 +57,15 @@
         app:layout_constraintHorizontal_weight="3"
         android:gravity="center"
         android:layout_margin="8dp"
+        android:background="@drawable/shape_background_filter_restaurants"
         >
         <TextView
             android:id="@+id/fh_filter_icon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            />
 
         <TextView
             android:id="@+id/fh_filter_label"
