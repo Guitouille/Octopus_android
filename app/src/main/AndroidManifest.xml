@@ -48,6 +48,13 @@
             
         </activity>
 
+        <activity
+            android:label="@string/app_name"
+            android:name=".features.restaurant.presentation.RestaurantDetailsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDfjntcwbyhbWJpeTFoRjR5r3ja_6X2zeQ" />
