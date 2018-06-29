@@ -35,6 +35,7 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
     fun setData(restaurants: List<RestaurantEntity>) {
         restaurantList.clear()
         restaurantList.addAll(restaurants)
+        notifyDataSetChanged()
     }
 
     open inner class RestaurantHolder(view: View?) : RecyclerView.ViewHolder(view)

@@ -40,11 +40,15 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
+
+        restaurantsViewModel = viewModel(viewModelFactory) {
+            observe(restaurantsLiveData, ::renderConnectionSuccess)
+            failure(failure, ::handleFailure)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializeMap()
         initializeView(savedInstanceState)
     }
 
@@ -72,18 +76,6 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         super.onDestroy()
         fh_mapview?.onDestroy()
     }
-
-    private fun initializeMap() {
-        locationManager = context?.getSystemService(LOCATION_SERVICE) as LocationManager?
-
-        try {
-            // Request location updates
-            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener)
-        } catch (ex: SecurityException) {
-            Log.d("RestaurantsFragment", "Security Exception, no location available")
-        }
-    }
-
     private fun initializeView(savedInstanceState: Bundle?) {
         fh_restaurant_list.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         fh_restaurant_list.adapter = restaurantsAdapter
@@ -103,8 +95,8 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         restaurantsAdapter.setData(restaurants ?: emptyList())
         gMap?.clear()
         restaurants?.forEach {
-            var marker : Marker? = gMap?.addMarker(MarkerOptions())
-            marker?.position = LatLng(it.lat, it.lng)
+            var markerOption = MarkerOptions().position(LatLng(it.lat, it.lng))
+            var marker : Marker? = gMap?.addMarker(markerOption)
             marker?.title = it.name
             marker?.tag = it
         }
@@ -125,6 +117,7 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
         gMap = googleMap
         isMapViewReady = true
+        gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 48.846866, 2.377181), 14f)) //move camera to location
         gMap?.setMinZoomPreference(6.0f)
         gMap?.setMaxZoomPreference(14.0f)
         gMap?.uiSettings?.isZoomControlsEnabled = false
@@ -136,22 +129,6 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
              true
         })
 
-        restaurantsViewModel = viewModel(viewModelFactory) {
-            observe(restaurantsLiveData, ::renderConnectionSuccess)
-            failure(failure, ::handleFailure)
-        }
-    }
-
-    private val locationListener: LocationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-            Log.d("location", "" + location.longitude + ":" + location.latitude)
-            if (isMapViewReady) {
-                gMap?.moveCamera(CameraUpdateFactory.newLatLng(LatLng(location.latitude, location.longitude))) //move camera to location
-            }
-        }
-
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-        override fun onProviderEnabled(provider: String) {}
-        override fun onProviderDisabled(provider: String) {}
+        restaurantsViewModel.getRestaurants()
     }
 }

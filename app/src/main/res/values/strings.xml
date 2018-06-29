@@ -14,6 +14,8 @@
     <string name="lastname">Lastname</string>
     <string name="create">Je m\'inscris</string>
     <string name="login">Login</string>
+    <string name="sort">Trier</string>
+    <string name="filter">Trier les restaurants</string>
     <string name="welcome">Bienvenue !</string>
     <string name="revolution">Octopus, l\'application qui va révolutionner votre pause déjeuner !</string>
     <string name="confirm_password">Confirm password</string>

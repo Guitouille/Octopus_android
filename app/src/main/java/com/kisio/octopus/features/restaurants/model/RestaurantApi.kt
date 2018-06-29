@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface RestaurantApi {
 
-    @GET("getRestaurants.php")
+    @GET("restaurant/getRestaurants.php")
     fun getRestaurants(): Call<List<RestaurantEntity>>
 }
