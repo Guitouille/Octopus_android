@@ -9,4 +9,7 @@
     <color name="colorTextSecondary">#FFFFFF</color>>
 
     <color name="white">#ffffff</color>
+
+    <color name="redFilter">#e3d45149</color>
+    <color name="redOctopus">#ffd45149</color>
 </resources>
