@@ -4,77 +4,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/app_toolbar"/>
+
     <com.google.android.gms.maps.MapView
         android:id="@+id/fh_mapview"
         android:layout_width="0dp"
-        android:layout_height="251dp"
-        app:layout_constraintBottom_toTopOf="@id/fh_filter_button"
+        android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/fh_sort_button"
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/fh_restaurant_list"
+    <View
+        android:id="@+id/fh_emptySpace"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/fh_filter_button"
-        app:layout_constraintTop_toBottomOf="@id/fh_mapview"
-        app:layout_constraintHorizontal_weight="1"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_background_sort_restaurants"
-        >
-        <TextView
-            android:id="@+id/fh_sort_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/red_color"
-            />
-
-        <TextView
-            android:id="@+id/fh_sort_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sort"
-            android:textSize="14sp"
-            android:textColor="@color/red_color"
-            />
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fh_mapview"/>
 
     <LinearLayout
-        android:id="@+id/fh_filter_button"
-        android:orientation="horizontal"
-        android:layout_width="0dp"
+        android:id="@+id/fh_buttons_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/fh_restaurant_list"
-        app:layout_constraintStart_toEndOf="@id/fh_sort_button"
+        android:padding="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="220dp"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_corners_background"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fh_mapview"
-        app:layout_constraintHorizontal_weight="3"
-        android:gravity="center"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_background_filter_restaurants"
-        >
-        <TextView
-            android:id="@+id/fh_filter_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            />
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/fh_filter_label"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/fh_sort_button"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/filter"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            />
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_background_sort_restaurants">
+
+            <TextView
+                android:id="@+id/fh_sort_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/red_color"
+                android:fontFamily="@font/octopus_icons"
+                android:text="@string/icon_tri"/>
+
+            <TextView
+                android:id="@+id/fh_sort_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/sort"
+                android:textSize="14sp"
+                android:textColor="@color/red_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fh_filter_button"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_background_filter_restaurants">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/octopus_icons"
+                android:text="@string/icon_filtre"/>
+
+            <TextView
+                android:id="@+id/fh_filter_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/filter"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -84,5 +104,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fh_filter_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/fh_buttons_container"/>
+
 </android.support.constraint.ConstraintLayout>

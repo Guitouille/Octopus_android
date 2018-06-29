@@ -47,7 +47,7 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
             rr_name.text = model.name
             rr_rate.rating = model.rate.rateValue as Float
             Picasso.get().load(model.restaurantPictures[0].url).into(rr_image)
-            rr_duration_value.text = model.foodMeanTime
+            rr_duration_value.text = model.foodMeanTime.split(" ")[0];
             containerView?.tag = model.id
             containerView?.setOnClickListener {
                 var restaurantId : Long = it.tag as Long
