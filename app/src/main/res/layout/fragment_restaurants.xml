@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/app_toolbar"/>
-
     <com.google.android.gms.maps.MapView
         android:id="@+id/fh_mapview"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"/>
 
     <View
         android:id="@+id/fh_emptySpace"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:background="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fh_mapview"/>
+        android:layout_below="@+id/fh_mapview"/>
 
     <LinearLayout
         android:id="@+id/fh_buttons_container"
@@ -33,9 +28,7 @@
         android:layout_marginTop="220dp"
         android:orientation="horizontal"
         android:background="@drawable/rounded_corners_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:id="@+id/fh_sort_button"
@@ -99,11 +92,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fh_restaurant_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fh_buttons_container"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fh_buttons_container"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

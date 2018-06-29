@@ -1,15 +1,11 @@
 package com.kisio.octopus.features.restaurants.presentation
 
-import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
+import android.widget.RelativeLayout
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -51,6 +47,10 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeView(savedInstanceState)
+
+        var toolbar : View = layoutInflater.inflate(R.layout.app_toolbar, null)
+        toolbar.layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        (view as RelativeLayout).addView(toolbar)
     }
 
     override fun onResume() {
