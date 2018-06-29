@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.kisio.octopus.R
 import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.row_restaurant.*
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -17,7 +18,7 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantHolder =
-            RestaurantItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_departures, parent, false))
+            RestaurantItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_restaurant, parent, false))
 
 
     override fun getItemCount(): Int {
@@ -25,7 +26,9 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
     }
 
     override fun onBindViewHolder(holder: RestaurantHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (position < restaurantList.size) {
+            (holder as RestaurantItemHolder).bind(restaurantList[position])
+        }
     }
 
     fun setData(restaurants: List<RestaurantEntity>) {
@@ -37,6 +40,9 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
 
     inner class RestaurantItemHolder(override val containerView: View?) : RestaurantHolder(containerView), LayoutContainer {
         fun bind(model: RestaurantEntity) {
+            //containerView.
+            rr_name.text = model.name
+
 
         }
     }

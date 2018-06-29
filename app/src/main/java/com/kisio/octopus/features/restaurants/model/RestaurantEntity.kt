@@ -11,6 +11,7 @@ restaurant_lat & restaurant_lng : DOUBLE
  */
 
 data class RestaurantEntity(@SerializedName("restaurant_id") val id : Long,
+                            @SerializedName("restaurant_name") val name : String,
                             @SerializedName("restaurant_address") val address : String,
                             @SerializedName("restaurant_lat") val lat: Double,
                             @SerializedName("restaurant_lng") val lng : Double,
