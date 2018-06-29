@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.kisio.octopus.R
 import com.kisio.octopus.features.restaurants.model.RestaurantEntity
+import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row_restaurant.*
 import javax.inject.Inject
@@ -40,10 +41,10 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
 
     inner class RestaurantItemHolder(override val containerView: View?) : RestaurantHolder(containerView), LayoutContainer {
         fun bind(model: RestaurantEntity) {
-            //containerView.
             rr_name.text = model.name
-
-
+            rr_rate.rating = model.rate.rateValue as Float
+            Picasso.get().load(model.restaurantPictures[0].url).into(rr_image)
+            rr_duration_value.text = model.foodMeanTime
         }
     }
 }

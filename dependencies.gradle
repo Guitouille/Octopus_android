@@ -20,6 +20,7 @@ ext {
     retrofit_version = '2.3.0'
     okhttp_logging_interceptor_version = '3.8.1'
     circleImageViewVersion = '2.2.0'
+    picassoVersion = '2.71828'
 
     //Unit Testing
     robolectric_version = '3.8'
@@ -57,7 +58,8 @@ ext {
             retrofit:                   "com.squareup.retrofit2:converter-gson:$retrofit_version",
             okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
             googleMaps:                 "com.google.android.gms:play-services-maps:$googleMapsVersion",
-            circleImageView:             "de.hdodenhof:circleimageview:$circleImageViewVersion"
+            circleImageView:            "de.hdodenhof:circleimageview:$circleImageViewVersion",
+            picasso:                    "com.squareup.picasso:picasso:$picassoVersion"
 
 
     ]

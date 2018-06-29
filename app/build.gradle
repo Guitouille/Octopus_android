@@ -98,6 +98,7 @@ dependencies {
     implementation applicationDependencies.okhttpLoggingInterceptor
     implementation applicationDependencies.googleMaps
     implementation applicationDependencies.circleImageView
+    implementation applicationDependencies.picasso
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin
