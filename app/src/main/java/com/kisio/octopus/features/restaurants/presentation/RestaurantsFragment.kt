@@ -40,6 +40,11 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
+
+        restaurantsViewModel = viewModel(viewModelFactory) {
+            observe(restaurantsLiveData, ::renderConnectionSuccess)
+            failure(failure, ::handleFailure)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,8 +108,8 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         restaurantsAdapter.setData(restaurants ?: emptyList())
         gMap?.clear()
         restaurants?.forEach {
-            var marker : Marker? = gMap?.addMarker(MarkerOptions())
-            marker?.position = LatLng(it.lat, it.lng)
+            var markerOption = MarkerOptions().position(LatLng(it.lat, it.lng))
+            var marker : Marker? = gMap?.addMarker(markerOption)
             marker?.title = it.name
             marker?.tag = it
         }
@@ -136,17 +141,13 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
              true
         })
 
-        restaurantsViewModel = viewModel(viewModelFactory) {
-            observe(restaurantsLiveData, ::renderConnectionSuccess)
-            failure(failure, ::handleFailure)
-        }
+        restaurantsViewModel.getRestaurants()
     }
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            Log.d("location", "" + location.longitude + ":" + location.latitude)
             if (isMapViewReady) {
-                gMap?.moveCamera(CameraUpdateFactory.newLatLng(LatLng(location.latitude, location.longitude))) //move camera to location
+                gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 12f)) //move camera to location
             }
         }
 

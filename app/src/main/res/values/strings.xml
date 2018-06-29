@@ -13,4 +13,7 @@
     <string name="lastname">Lastname</string>
     <string name="create">Create</string>
     <string name="login">Login</string>
+    <string name="sort">Trier</string>
+    <string name="filter">Trier les restaurants</string>
+
 </resources>
