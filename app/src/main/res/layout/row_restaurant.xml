@@ -1,116 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="4dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/rr_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/rr_name"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/rr_image"
-        android:layout_marginStart="4dp"
-        tools:text="restaurant de paris"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
 
-    <RatingBar
-        android:id="@+id/rr_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@id/rr_image"
-        app:layout_constraintTop_toBottomOf="@id/rr_name"
-        android:numStars="5"
-        android:stepSize="0.3"
-        tools:rating="2.4"
-        style="?android:attr/ratingBarStyleSmall"
-        />
-
-    <LinearLayout
-        android:id="@+id/rr_tag_containter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/rr_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
-        <TextView
-            android:id="@+id/rr_tag1"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:lines="1"
-            android:singleLine="true"
-            android:gravity="center"
-            android:ellipsize="end"
-            android:layout_marginEnd="2dp"
-            />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/rr_tag2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:lines="1"
-            android:singleLine="true"
-            android:gravity="center"
-            android:ellipsize="end"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
-            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/rr_image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <TextView
-            android:id="@+id/rr_tag3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:lines="1"
-            android:singleLine="true"
-            android:gravity="center"
-            android:ellipsize="end"
-            android:layout_marginStart="2dp"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/rr_duration_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="4dp"
-        >
-        <TextView android:id="@+id/rr_duration_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lines="1"
-            android:singleLine="true" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="8dp">
 
-        <TextView android:id="@+id/rr_duration_measure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lines="1"
-            android:singleLine="true" />
+                        <TextView
+                            android:id="@+id/rr_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="@color/header_title"
+                            android:fontFamily="sans-serif-medium"
+                            tools:text="Le Cotte Roti"/>
 
-    </LinearLayout>
+                        <RatingBar
+                            android:id="@+id/rr_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:numStars="5"
+                            android:stepSize="0.1"
+                            tools:rating="2.4"
+                            style="@style/restaurantRatingBar"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/circle"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginEnd="-4dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/rr_duration_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="@android:color/white"
+                            android:fontFamily="sans-serif-medium"
+                            tools:text="45"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="-6dp"
+                            android:layout_marginStart="1dp"
+                            android:fontFamily="sans-serif-medium"
+                            tools:text="min"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/rr_kitchen_types_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/bordered_shape">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:textColor="@color/light_gray"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="Française"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/bordered_shape">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:textColor="@color/light_gray"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="Française"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/bordered_shape">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:textColor="@color/light_gray"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="Française"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/bordered_shape">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:textColor="@color/light_gray"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="Française"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:background="@drawable/bordered_shape">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:textColor="@color/light_gray"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="Française"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
