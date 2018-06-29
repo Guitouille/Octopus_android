@@ -9,6 +9,9 @@
     <color name="colorTextSecondary">#FFFFFF</color>>
 
     <color name="white">#ffffff</color>
+
+    <color name="redFilter">#e3d45149</color>
+    <color name="redOctopus">#ffd45149</color>
     <color name="header_title">#3c3c3c</color>
     <color name="red_color">#d45149</color>
     <color name="light_gray">#b2b2b2</color>

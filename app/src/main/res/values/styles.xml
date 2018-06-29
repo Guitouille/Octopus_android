@@ -26,6 +26,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MyEditTextTheme">
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+    
     <style name="restaurantRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/restaurant_rating_bar_progress_drawable</item>
         <item name="android:minHeight">22dp</item>

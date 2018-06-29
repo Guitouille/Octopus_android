@@ -2,23 +2,90 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/fcr_email"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/fcr_background"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@id/fcr_password"
+        android:foreground="@drawable/image_overlay"
+        android:scaleType="centerCrop"
+        android:src="@drawable/welcome_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fcr_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="99dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.1"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/welcome"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fcr_revolution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.1"
+        android:lineSpacingExtra="5sp"
+        android:text="@string/revolution"
+        android:textColor="#ffd4d1"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@id/fcr_welcome"
+        app:layout_constraintStart_toStartOf="@id/fcr_welcome"
+        app:layout_constraintTop_toBottomOf="@id/fcr_welcome" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/fcr_firstname_lastname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:hint="@string/email"
+        android:textColorHint="@color/white"
+        android:theme="@style/MyEditTextTheme"
+        app:layout_constraintBottom_toTopOf="@id/fcr_password"
+        app:layout_constraintEnd_toStartOf="@id/fcr_host"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fcr_revolution"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintVertical_chainStyle="packed">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:nextFocusDown="@id/fcr_password"
+            android:textColor="@color/colorAccent" />
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/fcr_host"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.1"
+        android:lineSpacingExtra="3sp"
+        android:text="@string/kisio_com"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/fcr_firstname_lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fcr_firstname_lastname" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/fcr_password"
@@ -26,14 +93,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/password"
+        android:textColorHint="@color/white"
+        android:theme="@style/MyEditTextTheme"
         app:layout_constraintBottom_toTopOf="@id/fcr_confirm_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fcr_email">
+        app:layout_constraintEnd_toEndOf="@id/fcr_host"
+        app:layout_constraintStart_toStartOf="@id/fcr_firstname_lastname"
+        app:layout_constraintTop_toBottomOf="@id/fcr_firstname_lastname">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:nextFocusDown="@id/fcr_confirm_password"
+            android:textColor="@color/colorAccent" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -41,25 +115,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="@string/firstname"
+        android:hint="@string/confirm_password"
+        android:textColorHint="@color/white"
+        android:theme="@style/MyEditTextTheme"
         app:layout_constraintBottom_toTopOf="@id/fcr_create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/fcr_host"
+        app:layout_constraintStart_toStartOf="@id/fcr_firstname_lastname"
         app:layout_constraintTop_toBottomOf="@id/fcr_password">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/colorAccent" />
     </android.support.design.widget.TextInputLayout>
 
-    <Button
+    <TextView
         android:id="@+id/fcr_create"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_background"
         android:text="@string/create"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/fcr_host"
+        app:layout_constraintStart_toStartOf="@id/fcr_firstname_lastname"
         app:layout_constraintTop_toBottomOf="@id/fcr_confirm_password" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,13 +7,20 @@
     <string name="failure_server_error">Server Error</string>
     <string name="failure_departures_list_unavailable">Departures Unavailable.</string>
     <string name="failure_departures_non_existent">Departures Not Existent.</string>
-    <string name="email">Email</string>
+    <string name="email">prénom.nom</string>
     <string name="password">Password</string>
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
-    <string name="create">Create</string>
+    <string name="create">Je m\'inscris</string>
     <string name="login">Login</string>
     <string name="sort">Trier</string>
     <string name="filter">Trier les restaurants</string>
-
+    <string name="welcome">Bienvenue !</string>
+    <string name="revolution">Octopus, l\'application qui va révolutionner votre pause déjeuner !</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="check_form_failed">Informations manquantes dans le formulaire ou le mot de passe et sa confirmation ne sont pas identiques</string>
+    <string name="kisio_com">\@kisio.com</string>
+    <string name="hello">Bonjour !</string>
+    <string name="what_to_eat">On mange quoi aujourd\'hui ? \n Je me ferais bien des sushis…</string>
+    <string name="connection">Connexion</string>
 </resources>

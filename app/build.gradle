@@ -99,6 +99,8 @@ dependencies {
     implementation applicationDependencies.googleMaps
     implementation applicationDependencies.circleImageView
     implementation applicationDependencies.picasso
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin
