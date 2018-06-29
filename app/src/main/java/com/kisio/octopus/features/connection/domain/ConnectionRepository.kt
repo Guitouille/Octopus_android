@@ -1,23 +1,25 @@
 package com.kisio.octopus.features.connection.domain
 
 import com.kisio.octopus.core.exception.Failure
+import com.kisio.octopus.core.extension.sha256
 import com.kisio.octopus.core.functional.Either
 import com.kisio.octopus.core.platform.NetworkHandler
 import com.kisio.octopus.features.connection.model.ConnectionService
+import com.kisio.octopus.features.connection.model.ConnectionStatusResponse
 import retrofit2.Call
 import javax.inject.Inject
 
 interface ConnectionRepository {
-    fun authenticate(email: String, password: String): Either<Failure, Boolean>
-    // fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, Boolean>
+
+    fun authenticate(email: String, password: String): Either<Failure, ConnectionStatusResponse>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
                         private val service: ConnectionService) : ConnectionRepository {
 
-        override fun authenticate(email: String, password: String): Either<Failure, Boolean> {
+        override fun authenticate(email: String, password: String): Either<Failure, ConnectionStatusResponse> {
             return when (networkHandler.isConnected) {
-                true -> request(service.authenticate(email, password), { it }, false)
+                true -> request(service.authenticate("$email@kisio.com", password.sha256()), { it }, ConnectionStatusResponse.empty())
                 false, null -> Either.Left(Failure.NetworkConnection())
             }
         }

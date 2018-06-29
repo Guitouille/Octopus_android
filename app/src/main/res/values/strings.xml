@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Octopus</string>
+    <string name="prefs_file_name">octopus_prefs</string>
+    <string name="create_done">create_done</string>
 
     <string name="action_refresh">Refresh</string>
-
     <string name="failure_network_connection">No Network Connection.</string>
     <string name="failure_server_error">Server Error</string>
     <string name="failure_departures_list_unavailable">Departures Unavailable.</string>
-    <string name="failure_departures_non_existent">Departures Not Existent.</string>
+    <string name="failure_user_do_not_exist">User does not exist</string>
     <string name="email">prénom.nom</string>
     <string name="password">Password</string>
     <string name="firstname">Firstname</string>

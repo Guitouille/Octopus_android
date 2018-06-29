@@ -1,6 +1,7 @@
 package com.kisio.octopus.features.create.domain
 
 import com.kisio.octopus.core.exception.Failure
+import com.kisio.octopus.core.extension.sha256
 import com.kisio.octopus.core.functional.Either
 import com.kisio.octopus.core.platform.NetworkHandler
 import com.kisio.octopus.features.create.model.CreateService
@@ -20,7 +21,7 @@ interface CreateRepository {
             return when (networkHandler.isConnected) {
                 true -> {
                     val firstLastName = extractFirstLastName(email)
-                    request(service.createUser("${email}@kisio.com", sha256(password), firstLastName[0], firstLastName[1]), { it }, CreateStatusResponse.empty())
+                    request(service.createUser("$email@kisio.com", password.sha256(), firstLastName[0], firstLastName[1]), { it }, CreateStatusResponse.empty())
                 }
                 false, null -> Either.Left(Failure.NetworkConnection())
             }
@@ -46,26 +47,6 @@ interface CreateRepository {
             } catch (exception: Throwable) {
                 Either.Left(Failure.ServerError())
             }
-        }
-
-
-        fun sha256(base: String): String {
-            try {
-                val digest = MessageDigest.getInstance("SHA-256")
-                val hash = digest.digest(base.toByteArray(charset("UTF-8")))
-                val hexString = StringBuffer()
-
-                for (i in hash.indices) {
-                    val hex = Integer.toHexString(0xff and hash[i].toInt())
-                    if (hex.length == 1) hexString.append('0')
-                    hexString.append(hex)
-                }
-
-                return hexString.toString()
-            } catch (ex: Exception) {
-                throw RuntimeException(ex)
-            }
-
         }
     }
 }

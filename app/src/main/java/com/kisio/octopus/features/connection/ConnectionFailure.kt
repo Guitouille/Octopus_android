@@ -1,4 +1,4 @@
-package com.kisio.octopus.features.connection.model
+package com.kisio.octopus.features.connection
 
 import com.kisio.octopus.core.exception.Failure
 

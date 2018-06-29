@@ -14,6 +14,7 @@ import com.kisio.octopus.core.extension.viewModel
 import com.kisio.octopus.core.platform.BaseFragment
 import com.kisio.octopus.features.create.CreateFailure
 import com.kisio.octopus.features.restaurants.presentation.RestaurantsActivity
+import kotlinx.android.synthetic.main.fragment_connection.*
 import kotlinx.android.synthetic.main.fragment_create.*
 
 class CreateFragment : BaseFragment() {
@@ -51,6 +52,11 @@ class CreateFragment : BaseFragment() {
         val intent = Intent(context, RestaurantsActivity::class.java)
         accountCreated.let {
             if (it as Boolean) {
+                val sharedPref = activity?.getSharedPreferences(getString(R.string.prefs_file_name), Context.MODE_PRIVATE)
+                with(sharedPref?.edit()) {
+                    this?.putBoolean(getString(R.string.create_done), true)
+                    this?.apply()
+                }
                 startActivity(intent)
             } else {
                 handleFailure(Failure.ServerError())
