@@ -1,0 +1,8 @@
+package com.kisio.octopus.features.restaurant.presentation
+
+import com.kisio.octopus.R
+import com.kisio.octopus.core.platform.BaseFragment
+
+class RestaurantDetailsFragment : BaseFragment() {
+    override fun layoutId(): Int = R.layout.fragment_restaurant_details
+}

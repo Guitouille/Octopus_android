@@ -1,10 +1,12 @@
 package com.kisio.octopus.features.restaurants.presentation
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kisio.octopus.R
+import com.kisio.octopus.features.restaurant.presentation.RestaurantDetailsActivity
 import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
@@ -46,6 +48,13 @@ class RestaurantsAdapter @Inject constructor() : RecyclerView.Adapter<Restaurant
             rr_rate.rating = model.rate.rateValue as Float
             Picasso.get().load(model.restaurantPictures[0].url).into(rr_image)
             rr_duration_value.text = model.foodMeanTime
+            containerView?.tag = model.id
+            containerView?.setOnClickListener {
+                var restaurantId : Long = it.tag as Long
+                val intent = Intent(it.context, RestaurantDetailsActivity::class.java)
+                intent.putExtra("restaurant_id", restaurantId)
+                it.context.startActivity(intent)
+            }
         }
     }
 }

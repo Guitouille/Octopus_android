@@ -1,6 +1,7 @@
 package com.kisio.octopus.features.restaurants.presentation
 
 import android.content.Context.LOCATION_SERVICE
+import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -21,6 +22,7 @@ import com.kisio.octopus.core.extension.observe
 import com.kisio.octopus.core.extension.failure
 import com.kisio.octopus.core.extension.viewModel
 import com.kisio.octopus.core.platform.BaseFragment
+import com.kisio.octopus.features.restaurant.presentation.RestaurantDetailsActivity
 import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import kotlinx.android.synthetic.main.fragment_restaurants.*
 import javax.inject.Inject
@@ -84,14 +86,9 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun loadData() {
-/*        emptyView.visible()
-        departuresList.visible()*/
-        showProgress()
-        //connectionViewModel.authenticateUser()
     }
 
     private fun renderConnectionSuccess(restaurants: List<RestaurantEntity>?) {
-        hideProgress()
         restaurantsAdapter.setData(restaurants ?: emptyList())
         gMap?.clear()
         restaurants?.forEach {
@@ -110,14 +107,13 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun renderFailure(@StringRes message: Int) {
-        hideProgress()
         notifyWithAction(message, R.string.action_refresh, ::loadData)
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
         gMap = googleMap
         isMapViewReady = true
-        gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng( 48.846866, 2.377181), 14f)) //move camera to location
+        gMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(48.846866, 2.377181), 14f)) //move camera to location
         gMap?.setMinZoomPreference(6.0f)
         gMap?.setMaxZoomPreference(14.0f)
         gMap?.uiSettings?.isZoomControlsEnabled = false
@@ -125,8 +121,10 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
         gMap?.uiSettings?.isCompassEnabled = false
         gMap?.setOnMarkerClickListener(GoogleMap.OnMarkerClickListener {
             var restaurant = it.tag as RestaurantEntity
-
-             true
+            val intent = Intent(context, RestaurantDetailsActivity::class.java)
+            intent.putExtra("restaurant_id", restaurant.id)
+            context?.startActivity(intent)
+            true
         })
 
         restaurantsViewModel.getRestaurants()

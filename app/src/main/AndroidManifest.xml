@@ -27,6 +27,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".features.restaurant.presentation.RestaurantDetailsActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDfjntcwbyhbWJpeTFoRjR5r3ja_6X2zeQ"/>
