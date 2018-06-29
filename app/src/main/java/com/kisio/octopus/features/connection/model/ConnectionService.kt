@@ -11,5 +11,5 @@ class ConnectionService
 
     private val connectionApi by lazy { retrofit.create(ConnectionApi::class.java) }
 
-    override fun authenticate(email: String?, password: String?): Call<Boolean> = connectionApi.authenticate(email, password)
+    override fun authenticate(email: String?, password: String?): Call<ConnectionStatusResponse> = connectionApi.authenticate(email, password)
 }

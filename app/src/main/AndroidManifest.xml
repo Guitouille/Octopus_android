@@ -13,26 +13,44 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".features.create.presentation.CreateActivity">
 
-        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".features.splashscreen.SplashscreenActivity"
+            android:screenOrientation="portrait">
 
-        <activity android:name=".features.restaurants.presentation.RestaurantsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
-        <activity android:name=".features.restaurant.presentation.RestaurantDetailsActivity" />
+        <activity
+            android:label="@string/app_name"
+            android:name=".features.connection.presentation.ConnectionActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:label="@string/app_name"
+            android:name=".features.create.presentation.CreateActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:label="@string/app_name"
+            android:name=".features.restaurants.presentation.RestaurantsActivity"
+            android:screenOrientation="portrait">
+            
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDfjntcwbyhbWJpeTFoRjR5r3ja_6X2zeQ"/>
+            android:value="AIzaSyDfjntcwbyhbWJpeTFoRjR5r3ja_6X2zeQ" />
 
     </application>
 
