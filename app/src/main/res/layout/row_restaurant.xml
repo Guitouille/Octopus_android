@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="4dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rr_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/rr_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rr_image"
+        android:layout_marginStart="4dp"
+        tools:text="restaurant de paris"
+        />
+
+    <RatingBar
+        android:id="@+id/rr_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@id/rr_image"
+        app:layout_constraintTop_toBottomOf="@id/rr_name"
+        android:numStars="5"
+        android:stepSize="0.3"
+        tools:rating="2.4"
+        style="?android:attr/ratingBarStyleSmall"
+        />
+
+    <LinearLayout
+        android:id="@+id/rr_tag_containter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rr_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <TextView
+            android:id="@+id/rr_tag1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:lines="1"
+            android:singleLine="true"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginEnd="2dp"
+            />
+
+        <TextView
+            android:id="@+id/rr_tag2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:lines="1"
+            android:singleLine="true"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            />
+
+        <TextView
+            android:id="@+id/rr_tag3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:lines="1"
+            android:singleLine="true"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:layout_marginStart="2dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rr_duration_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="4dp"
+        >
+        <TextView android:id="@+id/rr_duration_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:singleLine="true" />
+
+        <TextView android:id="@+id/rr_duration_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

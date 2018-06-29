@@ -19,6 +19,7 @@ ext {
     javaxInject_version = '1'
     retrofit_version = '2.3.0'
     okhttp_logging_interceptor_version = '3.8.1'
+    circleImageViewVersion = '2.2.0'
 
     //Unit Testing
     robolectric_version = '3.8'
@@ -55,7 +56,8 @@ ext {
             javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
             retrofit:                   "com.squareup.retrofit2:converter-gson:$retrofit_version",
             okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
-            googleMaps:                 "com.google.android.gms:play-services-maps:$googleMapsVersion"
+            googleMaps:                 "com.google.android.gms:play-services-maps:$googleMapsVersion",
+            circleImageView:             "de.hdodenhof:circleimageview:$circleImageViewVersion"
 
 
     ]

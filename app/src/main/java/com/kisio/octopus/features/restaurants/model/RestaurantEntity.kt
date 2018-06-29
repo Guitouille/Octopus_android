@@ -18,4 +18,5 @@ data class RestaurantEntity(@SerializedName("restaurant_id") val id : Long,
                             @SerializedName("phone_number") val phoneNumber : String,
                             @SerializedName("time_schedules") val timeSchedules : String,
                             @SerializedName("food_type") val foodType : String,
-                            @SerializedName("food_mean_time") val foodMeanTime : String)
+                            @SerializedName("food_mean_time") val foodMeanTime : String,
+                            @SerializedName("restaurant_pictures") val restaurantPictures : List<PictureEntity>)
