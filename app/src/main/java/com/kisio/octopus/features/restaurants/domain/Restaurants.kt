@@ -5,7 +5,7 @@ import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import javax.inject.Inject
 
 class Restaurants
-@Inject constructor(private val restaurantsRepository: RestaurantRepository) : UseCase<List<RestaurantEntity>, Restaurants.Params>() {
+@Inject constructor(private val restaurantsRepository: RestaurantsRepository) : UseCase<List<RestaurantEntity>, Restaurants.Params>() {
 
     override suspend fun run(params: Params) = restaurantsRepository.getRestaurants()
 

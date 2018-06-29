@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.kisio.octopus.features.connection.presentation.ConnectionViewModel
 import com.kisio.octopus.features.create.presentation.CreateViewModel
+import com.kisio.octopus.features.restaurant.presentation.RestaurantDetailsViewModel
 import com.kisio.octopus.features.restaurants.presentation.RestaurantsViewModel
 import dagger.Binds
 import dagger.Module
@@ -18,6 +19,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(RestaurantsViewModel::class)
     abstract fun bindsRestaurantsViewModel(restaurantsViewModel: RestaurantsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RestaurantDetailsViewModel::class)
+    abstract fun bindsRestaurantDetailsViewModel(restaurantsViewModel: RestaurantDetailsViewModel): ViewModel
 
     @Binds
     @IntoMap

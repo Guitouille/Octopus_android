@@ -5,6 +5,7 @@ import com.squareup.leakcanary.LeakCanary
 import com.kisio.octopus.core.di.ApplicationComponent
 import com.kisio.octopus.core.di.ApplicationModule
 import com.kisio.octopus.core.di.DaggerApplicationComponent
+import ss.com.bannerslider.Slider
 
 class AndroidApplication : Application() {
 
@@ -19,6 +20,7 @@ class AndroidApplication : Application() {
         super.onCreate()
         this.injectMembers()
         this.initializeLeakDetection()
+        Slider.init(PicassoImageLoadingService(this));
     }
 
     private fun injectMembers() = appComponent.inject(this)

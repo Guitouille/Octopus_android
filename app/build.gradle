@@ -100,7 +100,7 @@ dependencies {
     implementation applicationDependencies.circleImageView
     implementation applicationDependencies.picasso
     implementation 'com.nineoldandroids:library:2.4.0'
-    implementation 'com.daimajia.slider:library:1.1.5@aar'
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin

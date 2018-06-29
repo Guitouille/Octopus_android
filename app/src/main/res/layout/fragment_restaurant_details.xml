@@ -39,11 +39,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp"/>
 
-            <com.daimajia.slider.library.SliderLayout
+            <ss.com.bannerslider.Slider
                 android:id="@+id/frd_images_slider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -60,6 +61,7 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/frd_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -69,7 +71,7 @@
                     tools:text="Le Cotte Roti"/>
 
                 <RatingBar
-                    android:id="@+id/rr_rate"
+                    android:id="@+id/frd_rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numStars="5"
@@ -202,6 +204,7 @@
             </HorizontalScrollView>
 
             <TextView
+                android:id="@+id/frd_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -211,6 +214,7 @@
                 tools:text="Temps total pause déjeuner : 55min"/>
 
             <TextView
+                android:id="@+id/frd_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -250,6 +254,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                     android:text="\ue905"/>
 
                 <TextView
+                    android:id="@+id/frd_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -273,6 +278,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
                     android:text="\ue904"/>
 
                 <TextView
+                    android:id="@+id/frd_phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

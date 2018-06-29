@@ -8,12 +8,12 @@ import com.kisio.octopus.features.restaurants.model.RestaurantEntity
 import retrofit2.Call
 import javax.inject.Inject
 
-interface RestaurantRepository {
+interface RestaurantsRepository {
     fun getRestaurants(): Either<Failure, List<RestaurantEntity>>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
-                        private val service: RestaurantService) : RestaurantRepository {
+                        private val service: RestaurantService) : RestaurantsRepository {
 
         override fun getRestaurants(): Either<Failure, List<RestaurantEntity>> {
             return when (networkHandler.isConnected) {

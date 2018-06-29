@@ -34,7 +34,6 @@ class RestaurantsFragment : BaseFragment(), OnMapReadyCallback {
 
     private var gMap : GoogleMap? = null
     private lateinit var restaurantsViewModel: RestaurantsViewModel
-    private var locationManager: LocationManager? = null
     private var isMapViewReady : Boolean = false
 
     override fun layoutId(): Int = R.layout.fragment_restaurants
