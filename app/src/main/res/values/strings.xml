@@ -7,4 +7,10 @@
     <string name="failure_server_error">Server Error</string>
     <string name="failure_departures_list_unavailable">Departures Unavailable.</string>
     <string name="failure_departures_non_existent">Departures Not Existent.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="create">Create</string>
+    <string name="login">Login</string>
 </resources>

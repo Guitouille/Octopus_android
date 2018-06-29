@@ -3,7 +3,9 @@ package com.kisio.octopus.core.di
 import android.content.Context
 import com.kisio.octopus.AndroidApplication
 import com.kisio.octopus.BuildConfig
-import com.kisio.octopus.features.connection.domain.RestaurantRepository
+import com.kisio.octopus.features.connection.domain.ConnectionRepository
+import com.kisio.octopus.features.create.domain.CreateRepository
+import com.kisio.octopus.features.restaurants.domain.RestaurantRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -23,7 +25,7 @@ class ApplicationModule(private val application: AndroidApplication) {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://api.navitia.io/v1/coverage/fr-idf/")
+                .baseUrl("https://www.rachik-abidi.com/octopus/ws/")
                 .client(createClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
@@ -32,7 +34,7 @@ class ApplicationModule(private val application: AndroidApplication) {
     private fun createClient(): OkHttpClient {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
         }
         return okHttpClientBuilder.build()
@@ -40,5 +42,13 @@ class ApplicationModule(private val application: AndroidApplication) {
 
     @Provides
     @Singleton
-    fun provideConnectionRepository(dataSource: RestaurantRepository.Network): RestaurantRepository = dataSource
+    fun provideRestaurantRepository(dataSource: RestaurantRepository.Network): RestaurantRepository = dataSource
+
+    @Provides
+    @Singleton
+    fun provideConnectionRepository(dataSource: ConnectionRepository.Network): ConnectionRepository = dataSource
+
+    @Provides
+    @Singleton
+    fun provideCreateRepository(dataSource: CreateRepository.Network): CreateRepository = dataSource
 }

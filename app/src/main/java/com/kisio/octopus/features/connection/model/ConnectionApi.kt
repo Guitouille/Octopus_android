@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface ConnectionApi {
 
-    @GET("authenticate")
+    @GET("user/checkUser.php")
     fun authenticate(@Query("email") email: String?, @Query("password") password: String?): Call<Boolean>
 }

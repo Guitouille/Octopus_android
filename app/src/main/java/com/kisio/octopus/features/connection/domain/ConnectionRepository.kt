@@ -3,17 +3,17 @@ package com.kisio.octopus.features.connection.domain
 import com.kisio.octopus.core.exception.Failure
 import com.kisio.octopus.core.functional.Either
 import com.kisio.octopus.core.platform.NetworkHandler
-import com.kisio.octopus.features.connection.model.RestaurantService
+import com.kisio.octopus.features.connection.model.ConnectionService
 import retrofit2.Call
 import javax.inject.Inject
 
 interface ConnectionRepository {
     fun authenticate(email: String, password: String): Either<Failure, Boolean>
-   // fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, Boolean>
+    // fun createAccount(email: String, password: String, firstName: String, lastName: String): Either<Failure, Boolean>
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
-                        private val service: RestaurantService) : RestaurantRepository {
+                        private val service: ConnectionService) : ConnectionRepository {
 
         override fun authenticate(email: String, password: String): Either<Failure, Boolean> {
             return when (networkHandler.isConnected) {
